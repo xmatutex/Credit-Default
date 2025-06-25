@@ -11,8 +11,8 @@ st.markdown("### Ingresá los datos del cliente:")
 # Inputs personales
 limite_credito = st.number_input("Límite de crédito (NT$)", min_value=0, step=10000)
 sexo = st.selectbox("Sexo", options=[1, 2], format_func=lambda x: "Masculino" if x == 1 else "Femenino")
-educacion = st.selectbox("Nivel educativo", options=[1, 2, 3, 4, 5, 6],
-                         format_func=lambda x: {1: "Postgrado", 2: "Universidad", 3: "Secundario", 4: "Otros", 5: "Desconocido", 6: "Desconocido"}[x])
+educacion = st.selectbox("Nivel educativo", options=[1, 2, 3, 4],
+                         format_func=lambda x: {1: "Postgrado", 2: "Universidad", 3: "Secundario", 4: "Otros"}[x])
 estado_civil = st.selectbox("Estado civil", options=[1, 2, 3],
                             format_func=lambda x: {1: "Casado/a", 2: "Soltero/a", 3: "Otro"}[x])
 edad = st.slider("Edad", 18, 100)
@@ -21,19 +21,19 @@ edad = st.slider("Edad", 18, 100)
 st.markdown("### Estados de pago (0 = pagó en término, 1+ = atraso)")
 pagos = {}
 for i in range(1, 7):
-    pagos[f"PAY_{i}"] = st.selectbox(f"PAY_{i}", list(range(0, 10)))
+    pagos[f"PAY_{i}"] = st.selectbox(f"Pago atrasado {i} m", list(range(0, 10)))
 
 # Montos facturados
-st.markdown("### Montos facturados por mes (NT$)")
+st.markdown("### Resumen de credito pro mes (promedio $40.000)")
 bill_amts = {}
 for i in range(1, 7):
-    bill_amts[f"BILL_AMT{i}"] = st.number_input(f"BILL_AMT{i}", step=100.0)
+    bill_amts[f"BILL_AMT{i}"] = st.number_input(f"Resumen mes {i}", step=100.0)
 
 # Montos pagados
-st.markdown("### Pagos realizados por mes (NT$)")
+st.markdown("### Pagos realizados en meses anteriores (promedio $50.000)")
 pay_amts = {}
 for i in range(1, 6+1):
-    pay_amts[f"PAY_AMT{i}"] = st.number_input(f"PAY_AMT{i}", step=100.0)
+    pay_amts[f"PAY_AMT{i}"] = st.number_input(f"Pago mes {i}", step=100.0)
 
 # Armar DataFrame
 # Botón para predecir
