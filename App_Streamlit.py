@@ -9,7 +9,7 @@ st.title("Predicción de Default de Tarjeta de Crédito")
 st.markdown("### Ingresá los datos del cliente:")
 
 # Inputs personales
-limite_credito = st.number_input("Límite de crédito (NT$)", min_value=0, step=10000)
+limite_credito = st.number_input("Límite de crédito (Max $1.000.000)", min_value=0, step=10000)
 sexo = st.selectbox("Sexo", options=[1, 2], format_func=lambda x: "Masculino" if x == 1 else "Femenino")
 educacion = st.selectbox("Nivel educativo", options=[1, 2, 3, 4],
                          format_func=lambda x: {1: "Postgrado", 2: "Universidad", 3: "Secundario", 4: "Otros"}[x])
